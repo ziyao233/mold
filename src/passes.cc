@@ -1033,7 +1033,7 @@ void add_synthetic_symbols(Context<E> &ctx) {
   if constexpr (is_ppc64v2<E>)
     for (std::pair<std::string_view, u32> p : ppc64_save_restore_insns)
       if (std::string_view label = p.first; !label.empty())
-        add(label);
+        add(label, STT_FUNC);
 
   obj.elf_syms = ctx.internal_esyms;
   obj.resolve_symbols(ctx);
